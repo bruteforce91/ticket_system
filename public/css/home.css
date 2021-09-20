@@ -1,0 +1,113 @@
+body {
+  background:white;
+}
+
+header{
+  display:flex;
+  height: 50px;
+  align-items:center;
+  justify-content: flex-end;
+  border-bottom: 5px solid whitesmoke;
+}
+
+.header__navBar {
+  display: flex;
+ min-width: 7%;
+ margin-right: 35px;
+ justify-content: space-between;
+}
+.header__navBar a {
+  font-size: 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  cursor:pointer;
+}
+.header__navBar a:hover {
+  color:red;
+
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  color: lightseagreen;
+  font-size: 50px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.container input {
+  font-size: 15px;
+  max-width: 100%;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  height: 30px;
+  padding-left: 13px;
+  cursor:pointer;
+  }
+
+
+.container input:focus {
+  outline:none;
+}
+
+.form-check {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-right: 50px;
+}
+.form-check-input {
+  padding:0px;
+  width: 17px;
+}
+
+.form-check label {
+  padding-left:20px;
+}
+.form-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.form-button button {
+  margin-bottom:15px;
+  border-radius: 5px;
+  padding: 13px 20px;
+  background-color: transparent;
+  color:#fa983a;
+  border:1px solid #fa983a;
+  cursor: pointer;
+}
+
+.form-button button:hover {
+  background-color:#fa983a ;
+  color:rgb(43,58,75);
+  transition:background-color 0.5s, color 0.5s;
+  font-weight: bolder;
+}
+
+.form-button a
+ {
+   font-size: 17px;
+   margin-right: 10px;
+   text-decoration: none;
+   cursor:pointer;
+ }
+.form-button a:hover {
+   color:red;
+ }
