@@ -30,6 +30,8 @@ class TaskController extends Controller
     }
 
     public function assignTasks(Request $request){
+        $allEmployees::all();
+        $devEmployees
         $employeeID=request()->input('employeeID');
         $taskID=request()->input('taskID');
       taskEmployee::create([

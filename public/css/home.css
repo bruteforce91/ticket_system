@@ -111,3 +111,8 @@ h1 {
 .form-button a:hover {
    color:red;
  }
+
+select {
+  margin:10px;
+  margin-bottom:30px;
+}

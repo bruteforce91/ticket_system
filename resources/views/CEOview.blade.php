@@ -27,9 +27,26 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+    <form action="{{ route('assignProject') }}" method="post">
+      @isset($PMemployees)
+      <h3>Assign new Project</h3>
+      <select name="pm" id="pmID">
+      <?php foreach ($PMemployees as $PM ): ?>
+        <option value="{{$PM}}">{{$PM['name']}}</option>
+      <?php endforeach; ?>
+      </select>
+
+      <select name="projects" id="projects->name">
+      <?php foreach ($allProjects as $project ): ?>
+        <option value="{{ $project }}">{{$project['name']}}</option>
+      <?php endforeach; ?>
+      </select>
+      @endisset
+      {{csrf_field()}}
+      <input type="submit" class="form-button" value="assign project">
+    </form>
     @isset($allProjects)
     <div>
       <h3>All Projects</h3>
