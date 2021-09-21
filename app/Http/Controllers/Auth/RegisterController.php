@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\rolesEmployee;
 use App\Models\roles;
 use App\Models\employee;
+use App\Models\userEmployee;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -87,7 +88,12 @@ class RegisterController extends Controller
           'roleID'=>$roleValue['id'],
           'employeeID'=>$cont+1,
         ]);
-      return   User::create([
+
+        userEmployee::create([
+          'userID'=>$cont+1,
+          'employeeID'=>$cont+1,
+        ]);
+      return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

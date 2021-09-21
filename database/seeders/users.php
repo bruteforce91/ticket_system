@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
-class roleEmployee extends Seeder
+class users extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,10 +13,11 @@ class roleEmployee extends Seeder
      */
     public function run()
     {
-      DB::table('role-employee')->insert([
+      DB::table('users')->insert([
         'id' => 1,
-        'roleID'=> 1,
-        'employeeID'=>1,
+        'name'=> 'Mario',
+        'email'=> 'mariorossi@gmail.com',
+        'password'=> '12345678',
       ]);
     }
 }

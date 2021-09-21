@@ -6,20 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class userEmployee extends Model
+class projectsEmployee extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $guarded=['id'];
 
-    protected $table='user-employee';
+    protected $table='project-employee';
 
     public function employee(){
       return $this->hasMany('app\Models\employee');
     }
 
-    public function users(){
-      return $this->hasMany('app\Models\users');
+    public function tasks(){
+      return $this->hasMany('app\Models\projects');
     }
 }
