@@ -7,14 +7,16 @@ use App\Models\employee;
 use App\Models\rolesEmployee;
 use App\Models\taskEmployee;
 use App\Models\User;
-
+use App\Models\task;
+use App\Models\taskProject;
+use App\Models\projectsEmployee;
+use App\Models\projects;
 
 class TaskController extends Controller
 {
     public function index(){
-      
-    }
 
+    }
     public function show($id){
 
     }

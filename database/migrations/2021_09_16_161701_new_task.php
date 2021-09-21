@@ -17,8 +17,6 @@ class NewTask extends Migration
         $table->increments('id')->unique();
         $table->text('description');
         $table->DateTime('deadline');
-        $table->integer('employeeID')->unsigned();
-        $table->foreign('employeeID')->references('id')->on('employees');
         $table->string('status');
           $table->timestamps();
           $table->softDeletes();

@@ -19,28 +19,24 @@ class tasks extends Seeder
         'id' => 1,
         'description'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
         'deadline'=>new DateTime(),
-        'employeeID'=> 1,
         'status'=> 'to do'
       ],
         [
         'id' => 2,
         'description'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
         'deadline'=>new DateTime(),
-        'employeeID'=> 1,
         'status'=> 'blocked'
       ],
         [
         'id' => 3,
         'description'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
         'deadline'=>new DateTime(),
-        'employeeID'=> 1,
         'status'=> 'to do'
       ],
         [
         'id' => 4,
         'description'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
         'deadline'=>new DateTime(),
-        'employeeID'=> 1,
         'status'=> 'review'
       ],
     ]);

@@ -16,13 +16,13 @@ class commits extends Seeder
       DB::table('commits')->insert([
         [
         'id' => 1,
-        'employeeID'=> 7,
+        'employeeID'=> 2,
         'taskID'=> 1,
         'title'=> 'refactor css',
         'description'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       ],
         ['id' => 2,
-        'employeeID'=> 7,
+        'employeeID'=> 2,
         'taskID'=> 1,
         'title'=> 'feat:new cart',
         'description'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',

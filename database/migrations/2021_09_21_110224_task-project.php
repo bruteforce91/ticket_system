@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class NewCommit extends Migration
+class TaskProject extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class NewCommit extends Migration
      */
     public function up()
     {
-      Schema::create('commits', function (Blueprint $table) {
+      Schema::create('task-project', function (Blueprint $table) {
         $table->increments('id')->unique();
-        $table->integer('employeeID')->unsigned();
-        $table->foreign('employeeID')->references('id')->on('employees');
         $table->integer('taskID')->unsigned();
         $table->foreign('taskID')->references('id')->on('tasks');
-        $table->string('title');
-        $table->text('description');
+        $table->integer('projectID')->unsigned();
+        $table->foreign('projectID')->references('id')->on('projects');
           $table->timestamps();
           $table->softDeletes();
       });
@@ -33,6 +31,6 @@ class NewCommit extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commits');
+      Schema::dropIfExists('task-project');
     }
 }

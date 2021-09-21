@@ -22,25 +22,17 @@
                       <div class="card__text_wrap">
                         <h4>Name:{{$nameUser}}</h4>
                         <h4>Role:{{$roleValue['role']}}</h4>
-                        @isset($personalProjects)
-                        <ul> Personal Projects:
-                        <?php foreach ($personalProjects as $project ): ?>
-                             <li>{{$project['name']}}</li>
-                        <?php endforeach; ?>
-                        </ul>
-                        @endisset
+
                       </div>
                     </div>
                 </div>
-                <div>
-                  <button type="button">Assign Tasks</button>
-                </div>
             </div>
+
         </div>
     </div>
-    @isset($tasksData)
+    @isset($personalTasks)
     <div>
-      <h3>Tasks for projects</h3>
+      <h3>Personal Tasks</h3>
     </div>
     <table class="table">
       <thead>
@@ -48,16 +40,40 @@
           <th scope="col">ID</th>
           <th scope="col">Status</th>
           <th scope="col">Description</th>
-          <th scope="col">Deadline</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($tasksData as $task ): ?>
+        <?php foreach ($personalTasks as $task ): ?>
           <tr>
             <td>{{$task['id']}}</td>
             <td>{{$task['status']}}</td>
             <td>{{$task['description']}}</td>
-            <td>{{$task['deadline']}}</td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+    @endisset
+
+    @isset($personalCommits)
+    <div>
+      <h3>Personal Commits</h3>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">taskID</th>
+          <th scope="col">title</th>
+          <th scope="col">description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($personalCommits as $commit ): ?>
+          <tr>
+            <td>{{$commit['id']}}</td>
+            <td>{{$commit['taskID']}}</td>
+            <td>{{$commit['title']}}</td>
+            <td>{{$commit['description']}}</td>
           </tr>
         <?php endforeach; ?>
       </tbody>
