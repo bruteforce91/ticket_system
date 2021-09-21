@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(tickets::class);
         $this->call(roleEmployee::class);
         $this->call(users::class);
-        // $this->call(taskEmployee::class);
-        // $this->call(projectEmployee::class);
-        // $this->call(taskProject::class);
+        $this->call(taskEmployee::class);
+        $this->call(projectEmployee::class);
+        $this->call(taskProject::class);
         $this->call(userEmployee::class);
     }
   }
