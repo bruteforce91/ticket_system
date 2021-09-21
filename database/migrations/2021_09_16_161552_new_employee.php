@@ -16,8 +16,7 @@ class NewEmployee extends Migration
       Schema::create('employees', function (Blueprint $table) {
         $table->increments('id');
         $table->string('name');
-        $table->string('surname');
-        $table->string('badgeID')->default('ciao');
+        $table->string('badgeID')->nullable();
         $table->string('email')->unique();
         $table->string('password');
         $table->timestamps();

@@ -17,7 +17,6 @@ class employees extends Seeder
       DB::table('employees')->insert([
         'id' => 1,
         'name'=> 'Mario',
-        'surname'=> 'Rossi',
         'badgeID'=>  'mr1',
         'email'=> 'mariorossi@gmail.com',
         'password'=> '12345678',

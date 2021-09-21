@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\rolesEmployee;
+use App\Models\roles;
+use App\Models\employee;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -53,6 +57,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role'=> ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -64,7 +69,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+      $roleSelected=$data['role'];
+      $allRoles=roles::all();
+      $roleValue= roles::where('role', $roleSelected)->first();
+      $allEmployees=employee::all();
+      $cont=0;
+      foreach ($allEmployees as $key => $value) {
+          $cont++;
+        }
+        employee::create([
+          'name' => $data['name'],
+          'email' => $data['email'],
+          'badgeID' => Hash::make($data['email']),
+          'password' => Hash::make($data['password']),
+      ]);
+        rolesEmployee::create([
+          'roleID'=>$roleValue['id'],
+          'employeeID'=>$cont+1,
+        ]);
+      return   User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

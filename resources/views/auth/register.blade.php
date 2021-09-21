@@ -57,6 +57,16 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+
+                            <div class="col-md-6">
+                                <select name="role" id="roleID">
+                                  <option value="dev">DEV</option>
+                                  <option value="pm">PM</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-button">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
