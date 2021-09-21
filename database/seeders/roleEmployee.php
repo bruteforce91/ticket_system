@@ -19,16 +19,6 @@ class roleEmployee extends Seeder
         'roleID'=> 1,
         'employeeID'=>1,
       ],
-      [
-      'id' => 2,
-      'roleID'=> 3,
-      'employeeID'=>2,
-      ],
-      [
-      'id' => 3,
-      'roleID'=> 2,
-      'employeeID'=>3,
-      ],
       ]);
     }
 }

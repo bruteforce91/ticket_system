@@ -22,24 +22,17 @@
                       <div class="card__text_wrap">
                         <h4>Name:{{$nameUser}}</h4>
                         <h4>Role:{{$roleValue['role']}}</h4>
-                        @isset($personalProjects)
-                        <ul> Personal Projects:
-                        <?php foreach ($personalProjects as $project ): ?>
-                             <li>{{$project['name']}}</li>
-                        <?php endforeach; ?>
-                        </ul>
-                        @endisset
+
                       </div>
                     </div>
                 </div>
-                <div>
-                </div>
+
             </div>
         </div>
     </div>
     @isset($personalProjects)
     <div>
-      <h3>Tasks for projects</h3>
+      <h3>Personal Projects</h3>
     </div>
     <table class="table">
       <thead>
@@ -60,7 +53,7 @@
     @endisset
     @isset($tasksData)
     <div>
-      <h3>Tasks for projects</h3>
+      <h3>Tasks for Personal Projects</h3>
     </div>
     <table class="table">
       <thead>

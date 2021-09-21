@@ -16,6 +16,6 @@ class roles extends Model
     protected $table='roles';
 
     public function rolesEmployee(){
-      return $this->belongsTo('app\Models\roles-employee') ;
+      return $this->belongsTo('app\Models\rolesEmployee') ;
     }
 }

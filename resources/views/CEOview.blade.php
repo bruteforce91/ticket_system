@@ -30,77 +30,73 @@
 
         </div>
     </div>
-    @isset($personalTasks)
+    @isset($allProjects)
     <div>
-      <h3>Personal Tasks</h3>
+      <h3>All Projects</h3>
     </div>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Status</th>
-          <th scope="col">Description</th>
+          <th scope="col">name</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($personalTasks as $task ): ?>
+        <?php foreach ($allProjects as $project ): ?>
           <tr>
-            <td>{{$task['id']}}</td>
-            <td>{{$task['status']}}</td>
-            <td>{{$task['description']}}</td>
+            <td>{{$project['id']}}</td>
+            <td>{{$project['name']}}</td>
           </tr>
         <?php endforeach; ?>
       </tbody>
     </table>
     @endisset
 
-    @isset($personalTasks)
+    @isset($allTeams)
     <div>
-      <h3>Tasks To do</h3>
+      <h3>Teams</h3>
     </div>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Status</th>
-          <th scope="col">Description</th>
+          <th scope="col">name</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($personalTasks as $task ):?>
-          @if($task->status ==='to do')
-         
+        <?php foreach ($allTeams as $team ):?>
+
+
           <tr>
-            <td>{{$task['id']}}</td>
-            <td>{{$task['status']}}</td>
-            <td>{{$task['description']}}</td>
+            <td>{{$team['id']}}</td>
+            <td>{{$team['name']}}</td>
           </tr>
-           @endif
+
         <?php endforeach; ?>
       </tbody>
     </table>
     @endisset
-    @isset($personalCommits)
+
+    @isset($PMemployees)
     <div>
-      <h3>Personal Commits</h3>
+      <h3>PM</h3>
     </div>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">taskID</th>
-          <th scope="col">title</th>
-          <th scope="col">description</th>
+          <th scope="col">name</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($personalCommits as $commit ): ?>
+        <?php foreach ($PMemployees as $PM ):?>
+
+
           <tr>
-            <td>{{$commit['id']}}</td>
-            <td>{{$commit['taskID']}}</td>
-            <td>{{$commit['title']}}</td>
-            <td>{{$commit['description']}}</td>
+            <td>{{$PM['id']}}</td>
+            <td>{{$PM['name']}}</td>
           </tr>
+
         <?php endforeach; ?>
       </tbody>
     </table>

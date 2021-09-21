@@ -71,13 +71,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
       $roleSelected=$data['role'];
-      $allRoles=roles::all();
       $roleValue= roles::where('role', $roleSelected)->first();
+
       $allEmployees=employee::all();
       $cont=0;
       foreach ($allEmployees as $key => $value) {
           $cont++;
         }
+        
         employee::create([
           'name' => $data['name'],
           'email' => $data['email'],

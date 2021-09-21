@@ -15,9 +15,9 @@ class TaskEmployee extends Migration
     {
       Schema::create('task-employee', function (Blueprint $table) {
         $table->increments('id')->unique();
-        $table->integer('employeeID')->unsigned();
+        $table->integer('employeeID')->unsigned()->nullable();
         $table->foreign('employeeID')->references('id')->on('employees');
-        $table->integer('taskID')->unsigned();
+        $table->integer('taskID')->unsigned()->nullable();
         $table->foreign('taskID')->references('id')->on('tasks');
           $table->timestamps();
           $table->softDeletes();

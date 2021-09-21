@@ -16,6 +16,6 @@ class task extends Model
     protected $table='tasks';
 
     public function taskEmployee(){
-      return $this->belongsTo('app\Models\task-employee') ;
+      return $this->belongsTo('app\Models\taskEmployee') ;
     }
 }

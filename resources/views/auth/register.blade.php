@@ -63,6 +63,7 @@
                                 <select name="role" id="roleID">
                                   <option value="dev">DEV</option>
                                   <option value="pm">PM</option>
+                                  <option value="ceo">CEO</option>
                                 </select>
                             </div>
                         </div>

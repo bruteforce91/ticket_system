@@ -17,12 +17,12 @@ class taskEmployee extends Seeder
         [
         'id' => 1,
         'taskID'=> 1,
-        'employeeID'=>2,
+        'employeeID'=>null,
       ],
       [
         'id' => 2,
         'taskID'=> 2,
-        'employeeID'=>2,
+        'employeeID'=>null,
       ],
       ]);
     }

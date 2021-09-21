@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class projects extends Model
+class teams extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $guarded=['id'];
 
-    protected $table='projects';
+    protected $table='teams';
 
     public function rolesEmployee(){
-      return $this->belongsTo('app\Models\projectsEmployee') ;
+      return $this->belongsTo('app\Models\teamEmployee') ;
     }
 }
