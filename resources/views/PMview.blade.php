@@ -33,11 +33,31 @@
                     </div>
                 </div>
                 <div>
-                  <button type="button">Assign Tasks</button>
                 </div>
             </div>
         </div>
     </div>
+    @isset($personalProjects)
+    <div>
+      <h3>Tasks for projects</h3>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($personalProjects as $project ): ?>
+          <tr>
+            <td>{{$project['id']}}</td>
+            <td>{{$project['name']}}</td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+    @endisset
     @isset($tasksData)
     <div>
       <h3>Tasks for projects</h3>
@@ -63,5 +83,9 @@
       </tbody>
     </table>
     @endisset
+    <form action="{{ route('assignTasks') }}" method="post">
+       {{csrf_field()}}
+       <input type="submit" class="btn btn-success" value="assign task">
+     </form>
 </div>
 @endsection

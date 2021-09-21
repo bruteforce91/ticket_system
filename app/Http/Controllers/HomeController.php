@@ -46,14 +46,26 @@ class HomeController extends Controller
         $roleValue= roles::where('id', $roleEmployee['roleID'])->first();
 
         if($roleValue['role']==='PM'){
+
+          // available Tasks for personal projects
           $projectsEmployee=projectsEmployee::where('employeeID',$employee['employeeID'])->get();
+          dd($projectsEmployee);
           $personalProjects=projects::select('id','name')->whereIn('id', $projectsEmployee)->get();
-          $taskForProject=taskProject::select('id','taskID','projectID')->whereIn('projectID', $personalProjects)->get();
+          $taskForProject=taskProject::whereIn('projectID', $personalProjects)->get();
+          foreach ($taskForProject as $key => $task) {
+            $allTaskAvailables[]=$task['taskID'];
+          }
+          $tasksData= task::whereIn('id',$allTaskAvailables)->get();
 
-          // no work
-          //$tasksData= task::where('id',$taskForProject['projectID'])->get();
 
-          return view('PMview',compact ('roleValue','personalProjects','nameUser'));
+          //select all Dev
+          $devRole=roles::where('role','=','DEV')->first();
+          $devEmployees=rolesEmployee::where('roleID',$devRole['id'])->get();
+          foreach ($devEmployees as $key => $dev) {
+            $idAllDev[]=$dev['employeeID'];
+          }
+          $dataDevEmployees=employee::whereIn('id',$idAllDev)->get();
+          return view('PMview',compact ('roleValue','personalProjects','nameUser','devEmployees','tasksData','taskForProject'));
         }
 
         if($roleValue['role']==='DEV'){
