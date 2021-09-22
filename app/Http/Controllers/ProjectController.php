@@ -44,6 +44,6 @@ class ProjectController extends Controller
                 ];
       projectsEmployee::create($obj);
 
-      return response()->json(['message' => 'ok']);
+       return redirect('home');
     }
 }

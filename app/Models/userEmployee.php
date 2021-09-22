@@ -20,6 +20,6 @@ class userEmployee extends Model
     }
 
     public function users(){
-      return $this->hasMany('app\Models\users');
+      return $this->hasMany('App\Models\users');
     }
 }

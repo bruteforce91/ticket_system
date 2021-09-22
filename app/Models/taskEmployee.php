@@ -20,6 +20,6 @@ class taskEmployee extends Model
     }
 
     public function tasks(){
-      return $this->hasMany('app\Models\task', 'id','taskID');
+      return $this->hasMany('App\Models\task', 'id','taskID');
     }
 }

@@ -16,6 +16,7 @@ use App\Models\projectsEmployee;
 use App\Models\commits;
 use App\Models\taskProject;
 use App\Models\teams;
+use App\Models\teamEmployee;
 
 class HomeController extends Controller
 {
@@ -63,18 +64,22 @@ class HomeController extends Controller
 
         if($role_emp=='CEO'){
           $employeeCEO=employee::where('id',$employee_id)->first();
-
+          $projectEmployee =projectsEmployee::with('projects.projectsEmployee','employee.projects')->get();
+          $proj=projects::with('projectsEmployee.employee')->get();
           $roleDev_id = roles::where('role', 'DEV')->first();
           $rolePM_id=roles::where('role', 'PM')->first();
           $allTeams=teams::all();
           $allProjects=projects::all();
           $allDev = rolesEmployee::where('roleID', $roleDev_id['id'])->with('employee')->get();
           $allPM = rolesEmployee::where('roleID', $rolePM_id['id'])->with('employee')->get();
+          $allEmployee=[
+            $allDev,$allPM
+          ];
+          // return $allEmployee[0][0]['employee'][0]['name'];
+          $teamEmployee=teams::with('teamEmployee.employee')->get();
 
-          return view('CEOview',compact ('employeeCEO','role_emp','allTeams','allProjects','allDev','allPM'));
+          return view('CEOview',compact ('employeeCEO','role_emp','allTeams','allProjects','allDev','allPM','teamEmployee','allEmployee','projectEmployee'));
         }
-
-
         else{
           return view('home',compact ('roleValue'));
         }

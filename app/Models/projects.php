@@ -16,6 +16,10 @@ class projects extends Model
     protected $table='projects';
 
     public function rolesEmployee(){
-      return $this->belongsTo('app\Models\projectsEmployee') ;
+      return $this->belongsTo('App\Models\projectsEmployee');
+    }
+
+    public function projectsEmployee(){
+      return $this->belongsTo('App\Models\projectsEmployee','id','projectID') ;
     }
 }

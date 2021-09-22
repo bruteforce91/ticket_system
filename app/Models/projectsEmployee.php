@@ -16,9 +16,9 @@ class projectsEmployee extends Model
 
     protected $table='project-employee';
 
-//    public function employee(){
-//      return $this->hasOne('app\Models\employee', 'employeeID', 'id');
-//    }
+   public function employee(){
+     return $this->hasMany('app\Models\employee', 'id', 'employeeID');
+   }
 
     public function projects(){
       return $this->hasMany('App\Models\projects', 'id', 'projectID');

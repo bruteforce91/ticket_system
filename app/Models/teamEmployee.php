@@ -13,13 +13,13 @@ class teamEmployee extends Model
 
     protected $guarded=['id'];
 
-    protected $table='task-employee';
+    protected $table='team-employee';
 
     public function employee(){
-      return $this->hasMany('app\Models\employee');
+      return $this->hasMany('App\Models\employee', 'id', 'employeeID');
     }
 
     public function teams(){
-      return $this->hasMany('app\Models\teams');
+      return $this->hasMany('App\Models\teams','id','teamID');
     }
 }

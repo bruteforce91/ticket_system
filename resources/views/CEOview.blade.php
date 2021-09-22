@@ -71,19 +71,16 @@
 
     <form action="{{ route('assignProject') }}" method="post">
       @isset($allTeams)
-      <h3>Assign Dev to team</h3>
+      <h3>Assign Dev/PM to team</h3>
       <select name="dev" id="devID">
         <option></option>
-      <?php foreach ($allDev[0]->employee as $dev ): ?>
-        <option value="{{$dev}}">{{$dev['name']}}</option>
-      <?php endforeach; ?>
-      </select>
-
-      <h3>Assign Dev to team</h3>
-      <select name="pm" id="pmID">
-        <option></option>
-      <?php foreach ($allPM[0]->employee as $pm ): ?>
-        <option value="{{$pm}}">{{$pm['name']}}</option>
+        return $allEmployee[0][0]['employee'][0]['name'];
+      <?php foreach ($allEmployee as $allEmpl ): ?>
+        <?php foreach ($allEmpl as $empl ): ?>
+          <?php foreach ($empl->employee as $e ): ?>
+        <option value="{{$e}}">{{$e['name']}}</option>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
       <?php endforeach; ?>
       </select>
 
@@ -96,7 +93,7 @@
       </select>
       @endisset
       {{csrf_field()}}
-      <input type="submit" class="form-button" value="assign Dev to Team">
+      <input type="submit" class="form-button" value="assign Dev/PM to Team">
     </form>
 
     @isset($allTeams)
@@ -108,16 +105,24 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">name</th>
+          <th scope="col">Employees</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($allTeams as $team ):?>
-
-
-          <tr>
-            <td>{{$team['id']}}</td>
-            <td>{{$team['name']}}</td>
-          </tr>
+        <?php foreach ($teamEmployee as $teams ):
+          $name='';
+          ?>
+            <tr>
+              <td>{{$teams['id']}}</td>
+              <td>{{$teams['name']}}</td>
+              <?php foreach ($teams->teamEmployee as $team ):?>
+                <?php foreach ($team->employee as $employee ):
+                  $name.="$employee->name, ";
+                  ?>
+                  <?php endforeach; ?>
+              <?php endforeach; ?>
+              <td>{{$name}}</td>
+            </tr>
 
         <?php endforeach; ?>
       </tbody>

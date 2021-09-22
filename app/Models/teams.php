@@ -15,7 +15,7 @@ class teams extends Model
 
     protected $table='teams';
 
-    public function rolesEmployee(){
-      return $this->belongsTo('app\Models\teamEmployee') ;
+    public function teamEmployee(){
+      return $this->hasMany('App\Models\teamEmployee','teamID','id') ;
     }
 }

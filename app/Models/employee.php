@@ -55,8 +55,11 @@ class employee extends Model
     }
 
     public function projects(){
-        return $this->hasMany('App\Models\projectsEmployee', 'employeeID', 'id');
+        return $this->hasMany('App\Models\projectsEmployee', 'id', 'employeeID');
     }
 
+    public function teamEmployee(){
+      return $this->hasMany('app\Models\teamEmployee','employeeID','id') ;
+    }
 
 }
