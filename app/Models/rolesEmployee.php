@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\roles;
 
 class rolesEmployee extends Model
 {
@@ -16,10 +17,10 @@ class rolesEmployee extends Model
     protected $table='role-employee';
 
     public function employee(){
-      return $this->hasMany('app\Models\employee');
+        return $this->hasMany('App\Models\employee', 'id', 'employeeID');
     }
 
     public function roles(){
-      return $this->hasMany('app\Models\roles');
+        return $this->hasOne('App\Models\roles', 'id', 'roleID');
     }
 }

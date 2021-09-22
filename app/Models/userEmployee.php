@@ -16,7 +16,7 @@ class userEmployee extends Model
     protected $table='user-employee';
 
     public function employee(){
-      return $this->hasMany('app\Models\employee');
+      return $this->hasOne('App\Models\employee');
     }
 
     public function users(){

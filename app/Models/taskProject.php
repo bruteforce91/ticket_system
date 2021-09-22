@@ -16,10 +16,10 @@ class taskProject extends Model
     protected $table='task-project';
 
     public function projects(){
-      return $this->hasMany('app\Models\projects');
+      return $this->hasMany('App\Models\projects', 'id', 'projectID');
     }
 
     public function tasks(){
-      return $this->hasMany('app\Models\task');
+      return $this->hasOne('App\Models\task', 'id', 'taskID');
     }
 }

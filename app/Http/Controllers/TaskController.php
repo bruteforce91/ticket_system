@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\employee;
-use App\Models\rolesEmployee;
 use App\Models\taskEmployee;
-use App\Models\User;
 use App\Models\task;
-use App\Models\taskProject;
-use App\Models\projectsEmployee;
-use App\Models\projects;
+
+
 
 class TaskController extends Controller
 {
@@ -26,19 +22,33 @@ class TaskController extends Controller
     }
 
     public function destroy($id){
-
+      $task=taskEmployee::where('taskID',$id)->delete();
+       if ($task){
+         $data=[
+         'status'=>'1',
+         'msg'=>'success'
+       ];
+       }else{
+         $data=[
+         'status'=>'0',
+         'msg'=>'fail'
+       ];
+       return response()->json($data);
     }
+  }
 
     public function assignTasks(Request $request){
-        $allEmployees::all();
-        $devEmployees
-        $employeeID=request()->input('employeeID');
-        $taskID=request()->input('taskID');
-      taskEmployee::create([
-        'employeeID'=> $employeeID,
-        'taskID'=> $taskID,
-      ]);
+        $employeeID=request()->input('dev');
+        $jsonEmployeeSelected=json_decode($employeeID, true);
 
-      return response()->json(['message' => 'ok']);
+        $taskID=request()->input('tasks');
+
+      taskEmployee::create([
+        'employeeID'=> $jsonEmployeeSelected['employeeID'],
+        'taskID'=>$taskID,
+      ]);
+      return redirect('home');
     }
+
+
 }

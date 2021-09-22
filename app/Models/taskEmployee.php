@@ -16,7 +16,7 @@ class taskEmployee extends Model
     protected $table='task-employee';
 
     public function employee(){
-      return $this->hasMany('app\Models\employee');
+      return $this->hasMany('App\Models\employee', 'id', 'employeeID');
     }
 
     public function tasks(){

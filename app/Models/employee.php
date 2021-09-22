@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class employee extends Authenticatable
+class employee extends Model
 {
     use HasFactory;
         use SoftDeletes;
@@ -48,11 +47,15 @@ class employee extends Authenticatable
     protected $table='employees';
 
     public function taskEmployee(){
-      return $this->belongsTo('app\Models\task-employee') ;
+      return $this->belongsTo('app\Models\taskEmployee') ;
     }
 
     public function rolesEmployee(){
-      return $this->belongsTo('app\Models\roles-employee') ;
+        return $this->hasMany('App\Models\rolesEmployee', 'employeeID', 'id');
+    }
+
+    public function projects(){
+        return $this->hasMany('App\Models\projectsEmployee', 'employeeID', 'id');
     }
 
 }
