@@ -47,7 +47,7 @@ class employee extends Model
     protected $table='employees';
 
     public function taskEmployee(){
-      return $this->belongsTo('app\Models\taskEmployee') ;
+      return $this->hasMany('app\Models\taskEmployee','employeeID','id') ;
     }
 
     public function rolesEmployee(){
@@ -57,5 +57,6 @@ class employee extends Model
     public function projects(){
         return $this->hasMany('App\Models\projectsEmployee', 'employeeID', 'id');
     }
+
 
 }

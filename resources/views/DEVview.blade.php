@@ -18,10 +18,10 @@
 
 
                     <div class="container">
-                      <h2>Welcome <span>{{$nameUser}}</span></h2>
+                      <h2>Welcome <span>{{$employeeDevWithTasks[0]['name']}}</span></h2>
                       <div class="card__text_wrap">
-                        <h4>Name:{{$nameUser}}</h4>
-                        <h4>Role:{{$roleValue['role']}}</h4>
+                        <h4>Name:{{$employeeDevWithTasks[0]['name']}}</h4>
+                        <h4>Role:{{$role_emp}}</h4>
 
                       </div>
                     </div>
@@ -30,31 +30,36 @@
 
         </div>
     </div>
-    @isset($personalTasks)
+    @isset($employeeDevWithTasks[0])
     <div>
       <h3>Personal Tasks</h3>
     </div>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col">taskID</th>
           <th scope="col">Status</th>
           <th scope="col">Description</th>
+          <th scope="col">Deadline</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($personalTasks as $task ): ?>
+        <?php foreach ($employeeDevWithTasks[0]['taskEmployee'] as $tasks ): ?>
+          <?php foreach ($tasks->tasks as $task ): ?>
+
           <tr>
-            <td>{{$task['id']}}</td>
-            <td>{{$task['status']}}</td>
-            <td>{{$task['description']}}</td>
+            <td>{{$task->id}}</td>
+            <td>{{$task->status}}</td>
+            <td>{{$task->description}}</td>
+            <td>{{$task->deadline}}</td>
           </tr>
+          <?php endforeach; ?>
         <?php endforeach; ?>
       </tbody>
     </table>
     @endisset
 
-    @isset($personalTasks)
+    @isset($employeeDevWithTasks[0])
     <div>
       <h3>Tasks To do</h3>
     </div>
@@ -67,15 +72,17 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($personalTasks as $task ):?>
+        <?php foreach ($employeeDevWithTasks[0]['taskEmployee'] as $tasks ): ?>
+          <?php foreach ($tasks->tasks as $task ): ?>
           @if($task->status ==='to do')
-         
+
           <tr>
             <td>{{$task['id']}}</td>
             <td>{{$task['status']}}</td>
             <td>{{$task['description']}}</td>
           </tr>
            @endif
+             <?php endforeach; ?>
         <?php endforeach; ?>
       </tbody>
     </table>

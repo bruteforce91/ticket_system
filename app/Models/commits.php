@@ -16,7 +16,7 @@ class commits extends Model
     protected $table='commits';
 
     public function employee(){
-      return $this->hasMany('app\Models\employee');
+      return $this->hasMany('app\Models\employee','id','employeeID');
     }
 
     public function tasks(){

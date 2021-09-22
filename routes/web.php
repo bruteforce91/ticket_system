@@ -25,3 +25,5 @@ Route::post('/assignTask', [App\Http\Controllers\TaskController::class, 'assignT
 Route::post('/assignProject', [App\Http\Controllers\ProjectController::class, 'assignProject'])->name('assignProject');;
 
 // Route::post('/assignTasks','TaskController@assignTasks')->name('assignTasks');
+
+Route::post('/deleteTask',[App\Http\Controllers\TaskController::class,'destroy'])->name('delete');

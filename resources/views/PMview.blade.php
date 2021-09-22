@@ -108,9 +108,9 @@
        <input type="submit" class="btn btn-success" value="assign task">
      </form>
 
-     <form action="{{ route('assignTasks') }}" method="post">
+     <form action="{{ route('delete',$obj['PM']['projects'][0]['tasks'][0]['taskID'] ) }}" method="post">
         {{csrf_field()}}
-        @isset($obj['dev'])
+        @isset($obj['PM']['projects'])
         <h3>Delete Task assigned</h3>
         taskID:
         <select name="tasks" id="tasksID">
@@ -121,7 +121,7 @@
         <?php endforeach; ?>
         </select>
         @endisset
-        <input type="submit" class="btn btn-success" value="assign task">
+        <input type="submit" class="btn btn-success" value="delete task">
       </form>
 
      @isset($taskEmployee)

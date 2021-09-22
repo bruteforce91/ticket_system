@@ -18,10 +18,10 @@
 
 
                     <div class="container">
-                      <h2>Welcome <span>{{$nameUser}}</span></h2>
+                      <h2>Welcome <span>{{$employeeCEO['name']}}</span></h2>
                       <div class="card__text_wrap">
-                        <h4>Name:{{$nameUser}}</h4>
-                        <h4>Role:{{$roleValue['role']}}</h4>
+                        <h4>Name:{{$employeeCEO['name']}}</h4>
+                        <h4>Role:{{$role_emp}}</h4>
 
                       </div>
                     </div>
@@ -30,10 +30,10 @@
         </div>
     </div>
     <form action="{{ route('assignProject') }}" method="post">
-      @isset($PMemployees)
-      <h3>Assign new Project</h3>
+      @isset($allPM)
+      <h3>Assign new Project to PM</h3>
       <select name="pm" id="pmID">
-      <?php foreach ($PMemployees as $PM ): ?>
+      <?php foreach ($allPM[0]->employee as $PM ): ?>
         <option value="{{$PM}}">{{$PM['name']}}</option>
       <?php endforeach; ?>
       </select>
@@ -68,6 +68,36 @@
       </tbody>
     </table>
     @endisset
+
+    <form action="{{ route('assignProject') }}" method="post">
+      @isset($allTeams)
+      <h3>Assign Dev to team</h3>
+      <select name="dev" id="devID">
+        <option></option>
+      <?php foreach ($allDev[0]->employee as $dev ): ?>
+        <option value="{{$dev}}">{{$dev['name']}}</option>
+      <?php endforeach; ?>
+      </select>
+
+      <h3>Assign Dev to team</h3>
+      <select name="pm" id="pmID">
+        <option></option>
+      <?php foreach ($allPM[0]->employee as $pm ): ?>
+        <option value="{{$pm}}">{{$pm['name']}}</option>
+      <?php endforeach; ?>
+      </select>
+
+
+      <select name="teams" id="teamsID">
+        <option></option>
+      <?php foreach ($allTeams as $team ): ?>
+        <option value="{{ $project }}">{{$team['name']}}</option>
+      <?php endforeach; ?>
+      </select>
+      @endisset
+      {{csrf_field()}}
+      <input type="submit" class="form-button" value="assign Dev to Team">
+    </form>
 
     @isset($allTeams)
     <div>

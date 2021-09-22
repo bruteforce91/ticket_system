@@ -21,20 +21,13 @@ class TaskController extends Controller
 
     }
 
-    public function destroy($id){
-      $task=taskEmployee::where('taskID',$id)->delete();
-       if ($task){
-         $data=[
-         'status'=>'1',
-         'msg'=>'success'
-       ];
-       }else{
-         $data=[
-         'status'=>'0',
-         'msg'=>'fail'
-       ];
-       return response()->json($data);
-    }
+    public function destroy(Request $request){
+      $taskInput=request()->input('tasks');
+
+      $task=taskEmployee::where('taskID',$taskInput)->delete();
+
+       return redirect('home');
+    
   }
 
     public function assignTasks(Request $request){
