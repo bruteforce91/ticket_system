@@ -17,7 +17,7 @@
 
                     {{ __('You are logged in!') }}
 
-                    {{$roleValue}}
+                  
 
                 </div>
             </div>

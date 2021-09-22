@@ -14,16 +14,16 @@ class taskEmployee extends Seeder
     public function run()
     {
       DB::table('task-employee')->insert([
-        [
-        'id' => 1,
-        'taskID'=> 1,
-        'employeeID'=>null,
-      ],
-      [
-        'id' => 2,
-        'taskID'=> 2,
-        'employeeID'=>null,
-      ],
-      ]);
+      //   [
+      //   'id' => 1,
+      //   'taskID'=> 1,
+      //   'employeeID'=>null,
+      // ],
+      // [
+      //   'id' => 2,
+      //   'taskID'=> 2,
+      //   'employeeID'=>null,
+      // ],
+       ]);
     }
 }

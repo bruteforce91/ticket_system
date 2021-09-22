@@ -13,12 +13,12 @@ class roleEmployee extends Seeder
      */
     public function run()
     {
-      DB::table('role-employee')->insert([
-        [
-        'id' => 1,
-        'roleID'=> 1,
-        'employeeID'=>1,
-      ],
-      ]);
+      // DB::table('role-employee')->insert([
+      //   [
+      //   'id' => 1,
+      //   'roleID'=> 1,
+      //   'employeeID'=>1,
+      // ],
+      // ]);
     }
 }

@@ -14,16 +14,16 @@ class projectEmployee extends Seeder
     public function run()
     {
       DB::table('project-employee')->insert([
-        [
-        'id' => 1,
-        'projectID'=> 1,
-        'employeeID'=>3,
-      ],
-      [
-        'id' => 2,
-        'projectID'=> 1,
-        'employeeID'=>3,
-      ],
-      ]);
+      //   [
+      //   'id' => 1,
+      //   'projectID'=> 1,
+      //   'employeeID'=>3,
+      // ],
+      // [
+      //   'id' => 2,
+      //   'projectID'=> 1,
+      //   'employeeID'=>3,
+      // ],
+      // ]);
     }
 }

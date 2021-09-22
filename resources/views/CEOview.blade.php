@@ -7,15 +7,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
 
                     <div class="container">
                       <h2>Welcome <span>{{$employeeCEO['name']}}</span></h2>
@@ -29,6 +26,7 @@
             </div>
         </div>
     </div>
+
     <form action="{{ route('assignProject') }}" method="post">
       @isset($allPM)
       <h3>Assign new Project to PM</h3>
@@ -43,9 +41,9 @@
         <option value="{{ $project }}">{{$project['name']}}</option>
       <?php endforeach; ?>
       </select>
-      @endisset
       {{csrf_field()}}
       <input type="submit" class="form-button" value="assign project">
+      @endisset
     </form>
     @isset($allProjects)
     <div>
@@ -56,27 +54,28 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">name</th>
+          <th scope="col">PM</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($projectEmployee as $project ): ?>
-          <?php foreach ($project as $proj ): ?>
-            <?php foreach ($proj as $projEmp ): ?>
+          <?php foreach ($project->projects as $proj ): ?>
           <tr>
-            <td>{{$project['id']}}</td>
-            <td>{{$projEmp['name']}}</td>
+            <td>{{$project['projectID']}}</td>
+            <td>{{$proj['name']}}</td>
+
+            <td>  @isset($project['employee'][0]) {{$project['employee'][0]['name']}}  @endisset</td>
           </tr>
+          <?php endforeach; ?>
         <?php endforeach; ?>
       </tbody>
     </table>
     @endisset
 
-    <form action="{{ route('assignProject') }}" method="post">
+    <form action="{{ route('assignTeam') }}" method="post">
       @isset($allTeams)
       <h3>Assign Dev/PM to team</h3>
-      <select name="dev" id="devID">
-        <option></option>
-        return $allEmployee[0][0]['employee'][0]['name'];
+      <select name="dev" id="teamID">
       <?php foreach ($allEmployee as $allEmpl ): ?>
         <?php foreach ($allEmpl as $empl ): ?>
           <?php foreach ($empl->employee as $e ): ?>
@@ -88,9 +87,8 @@
 
 
       <select name="teams" id="teamsID">
-        <option></option>
       <?php foreach ($allTeams as $team ): ?>
-        <option value="{{ $project }}">{{$team['name']}}</option>
+        <option value="{{ $team }}">{{$team['name']}}</option>
       <?php endforeach; ?>
       </select>
       @endisset
@@ -152,6 +150,12 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+    @endisset
+
+    @isset($nameProjCross[0])
+    <div>
+      <h3>Project Cross Team: {{$nameProjCross[0]['name']}}</h3>
+    </div>
     @endisset
 </div>
 @endsection

@@ -16,21 +16,23 @@
                         </div>
                     @endif
 
-
+                    @isset($employeeDevWithTasks)
                     <div class="container">
                       <h2>Welcome <span>{{$employeeDevWithTasks[0]['name']}}</span></h2>
                       <div class="card__text_wrap">
                         <h4>Name:{{$employeeDevWithTasks[0]['name']}}</h4>
                         <h4>Role:{{$role_emp}}</h4>
-
+                        <h4>@isset($PMEmployee[0]['employee']) PM:{{$PMEmployee[0]['employee'][0]['name']}}@endisset</h4>
+                        <h4>@isset($PMEmployee[0]['teams']) TEAM:{{$PMEmployee[0]['teams'][0]['name']}}@endisset</h4>
                       </div>
                     </div>
+                    @endisset
                 </div>
             </div>
 
         </div>
     </div>
-    @isset($employeeDevWithTasks[0])
+    @isset($employeeDevWithTasks)
     <div>
       <h3>Personal Tasks</h3>
     </div>
@@ -87,7 +89,7 @@
       </tbody>
     </table>
     @endisset
-    @isset($personalCommits)
+    @isset($devCommits)
     <div>
       <h3>Personal Commits</h3>
     </div>
@@ -101,7 +103,7 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($personalCommits as $commit ): ?>
+        <?php foreach ($devCommits as $commit ): ?>
           <tr>
             <td>{{$commit['id']}}</td>
             <td>{{$commit['taskID']}}</td>
