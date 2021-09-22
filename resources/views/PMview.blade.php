@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    @isset($obj['PM']['projects'])
+    @isset($obj['PM']['projectsPM'])
     <div>
       <h3>Personal Projects</h3>
     </div>
@@ -42,7 +42,7 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($obj['PM']['projects']as $project ): ?>
+        <?php foreach ($obj['PM']['projectsPM']as $project ): ?>
           <tr>
             <td>{{$project['projects'][0]['id']}}</td>
             <td>{{$project['projects'][0]['name']}}</td>
@@ -51,7 +51,7 @@
       </tbody>
     </table>
     @endisset
-    @isset($obj['PM']['projects'])
+    @isset($obj['PM']['projectsPM'])
     <div>
       <h3>Tasks for Personal Projects</h3>
     </div>
@@ -68,7 +68,7 @@
       </thead>
       <tbody>
         <?php
-        foreach ($obj['PM']['projects'] as $project ): ?>
+        foreach ($obj['PM']['projectsPM'] as $project ): ?>
           <?php foreach ($project['tasks'] as $proj): ?>
 
           <tr>
@@ -79,7 +79,7 @@
             <td>{{$proj['tasks']['description']}}</td>
             <td>{{$proj['tasks']['deadline']}}</td>
           </tr>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
         <?php endforeach; ?>
       </tbody>
     </table>
@@ -98,7 +98,7 @@
        </select>
        taskID:
        <select name="tasks" id="tasksID">
-         <?php foreach ($obj['PM']['projects'] as $project ): ?>
+         <?php foreach ($obj['PM']['projectsPM'] as $project ): ?>
            <?php foreach ($project['tasks'] as $proj): ?>
              <option value="{{$proj['taskID']}}">{{$proj['taskID']}}</option>
         <?php endforeach; ?>
@@ -108,13 +108,14 @@
        <input type="submit" class="btn btn-success" value="assign task">
      </form>
 
-     <form action="{{ route('delete',$obj['PM']['projects'][0]['tasks'][0]['taskID'] ) }}" method="post">
+     @isset($obj['PM']['projectsPM'])
+     <form action="{{ route('delete') }}" method="post">
         {{csrf_field()}}
-        @isset($obj['PM']['projects'])
+        @isset($obj['PM']['projectsPM'])
         <h3>Delete Task assigned</h3>
         taskID:
         <select name="tasks" id="tasksID">
-          <?php foreach ($obj['PM']['projects'] as $project ): ?>
+          <?php foreach ($obj['PM']['projectsPM'] as $project ): ?>
             <?php foreach ($project['tasks'] as $proj): ?>
               <option value="{{$proj['taskID']}}">{{$proj['taskID']}}</option>
          <?php endforeach; ?>
@@ -123,7 +124,7 @@
         @endisset
         <input type="submit" class="btn btn-success" value="delete task">
       </form>
-
+      @endisset
      @isset($taskEmployee)
      <div>
        <h3>Tasks assigned</h3>

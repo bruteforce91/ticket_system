@@ -40,7 +40,7 @@ class HomeController extends Controller
       $getID = Auth::user()->id;
       $employee= userEmployee::where('userID', $getID)->first();
       $employee_id = $employee['employeeID'];
-      $employee = employee::where('id', $employee_id)->with('rolesEmployee.roles', 'projects.tasks.tasks', 'projects.projects')->first();
+      $employee = employee::where('id', $employee_id)->with('rolesEmployee.roles', 'projectsPM.tasks.tasks', 'projectsPM.projects')->first();
       $role_emp = $employee['rolesEmployee'][0]['roles']['role'];
       $taskEmployee=taskEmployee::all();
 
@@ -51,14 +51,13 @@ class HomeController extends Controller
                 'dev' => $dev,
                 'PM' => $employee,
               ];
-            // return $obj['dev'];
+            // return $obj;
             return view('PMview',compact ('obj','role_emp','taskEmployee'));
         }
 
         if($role_emp == 'DEV'){
           $employeeDevWithTasks=employee::where('id',$employee_id)->with('taskEmployee.tasks')->get();
           $devCommits=commits::where('employeeID',$employee_id)->get();
-          // return $employeeDevWithTasks[0]['taskEmployee'][1]['tasks'][0];
           return view('DEVview',compact ('employeeDevWithTasks','devCommits','role_emp'));
         }
 

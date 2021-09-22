@@ -59,10 +59,12 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($allProjects as $project ): ?>
+        <?php foreach ($projectEmployee as $project ): ?>
+          <?php foreach ($project as $proj ): ?>
+            <?php foreach ($proj as $projEmp ): ?>
           <tr>
             <td>{{$project['id']}}</td>
-            <td>{{$project['name']}}</td>
+            <td>{{$projEmp['name']}}</td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -142,8 +144,6 @@
       </thead>
       <tbody>
         <?php foreach ($PMemployees as $PM ):?>
-
-
           <tr>
             <td>{{$PM['id']}}</td>
             <td>{{$PM['name']}}</td>
